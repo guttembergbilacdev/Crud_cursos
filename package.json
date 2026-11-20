@@ -1,0 +1,26 @@
+{
+  "name": "crud_cursos",
+  "version": "1.0.0",
+  "description": "CRUD de Cursos Trabalho 1",
+  "main": "index.js",
+  "scripts": { 
+    "start": "node src/server",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/guttembergbilacdev/Crud_cursos.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/guttembergbilacdev/Crud_cursos/issues"
+  },
+  "homepage": "https://github.com/guttembergbilacdev/Crud_cursos#readme",
+  "dependencies": {
+    "express": "^5.3.0",
+    "sqlite3": "^6.0.1"
+  }
+}
