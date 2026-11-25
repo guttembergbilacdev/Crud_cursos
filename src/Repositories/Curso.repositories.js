@@ -1,28 +1,47 @@
+
 import db from "../Config/Database.js"
 
 db.run (`
-    CREATE TABLE IF NOT EXISTS Curso(
+    CREATE TABLE IF NOT EXISTS curso (
         id  INTEGER PRIMARY KEY AUTOINCREMENT,
         nome TEXT NOT NULL UNIQUE, 
         area TEXT NOT NULL,
         nivel TEXT NOT NULL,
         modalidade TEXT NOT NULL
     )
-    
-`)
+`);
 
-function creatCursorepositories (novoCurso){
-    return new Promise ((res, rej) => {
-        const {nome, area, nivel, modalidade} = novoCurso
+function createcursoRepositories(novocurso) {
+    return new Promise ((resolve, reject) => {
+
+        const { nome, area, nivel, modalidade } = novocurso;
 
         db.run (
-            `INSERT INTOR Curso (nome, area, nivel, modalidade)
-            VALUES (?,?,?,?)`, [nome, area, nivel, modalidade],
+            `INSERT INTOR curso (nome, area, nivel, modalidade) VALUES (?,?,?,?)`,
+            [nome, area, nivel, modalidade],
+            
             (err) => {
                 if (err){
+
                     rej (err)
                 } else {
-                    res (novoCurso)
+                    
+                    res (novocurso)
+                }
+            }
+        )
+    })
+}
+
+function readALLcursoRepositories() {
+    return new Promise((resolve, reject) => {
+        db.all(
+            'SELECT * FROM curso', [],
+            (error, rows) => {
+                if (error) {
+                    reject(error);
+                } else{
+                    resolve(rows);
                 }
             }
         )
@@ -30,5 +49,7 @@ function creatCursorepositories (novoCurso){
 }
 
 export default {
-    creatCursorepositories      
-}
+     createcursoRepositories,
+    readALLcursoRepositories
+
+};

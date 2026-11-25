@@ -1,17 +1,32 @@
-import Cursoservice from "../Services/Curso.services.js"
 
-async function creatCursocontrollers(req, res) {
-    const novoCurso = req.body
+import cursoService from "../Service/curso.Service.js";
+
+
+async function createcursoController(request, response) {
+        const novocurso = request.body;
 
     try {
-        const Cursosalvo = await Cursoservice.creatCursoservice(novoCurso)
+        
+        const cursoSalvo = await cursoService.createcursoService(novocurso);
 
-            res.status (201).send(Cursosalvo)
-    } catch (err) {
-        res.status (400).send(err.message)
+               response.status(201). send(cursoSalvo);
+    } catch(error) {
+
+               response.status(400). send(error.message);
+    }
+}
+
+async function readALLcursoController(request, response) {
+    try {
+        const curso = await cursoService.readALLcursoService();
+        
+        response.status(200).send({curso});
+    } catch(error) {
+        response.status(400).send(error.message);
     }
 }
 
 export default {
-    creatCursocontrollers
+    createcursoController,
+    readALLcursoController
 }

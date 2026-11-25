@@ -1,11 +1,13 @@
 import express from "express";
-import CursoRouter from "./src/Routes/Curso.routes.js";
 
-const app = express ();
+import cursoRoutes from "./src/Routes/curso.Routes.js";
 
-app.use (express.json ());
-app.use (CursoRouter);
+const app = express();
 
-app.listen (3000, () => {
-    console.log ("Servidor rodando na porta 3000...");
-})
+app.use(express.json());
+
+app.use(cursoRoutes);
+
+app.listen(3000, () => {
+    console.log("Servidor rodando na porta 3000...");
+});
