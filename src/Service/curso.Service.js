@@ -1,13 +1,8 @@
 
-import db from "../config/Database.js";
-import cursoRepositories from "../Repositories/curso.Repositories.js";
-
+import cursoRepository from "../Repository/curso.Repository.js";
 
 async function createcursoService(novocurso) {
-    
-   
-  const cursoSalvo =
-    await cursoRepositories.createcursoRepositories(novocurso);
+  const cursoSalvo = await cursoRepository.createcursoRepository(novocurso);
 
   if (!cursoSalvo) {
     throw new Error("Erro ao criar novo curso");
@@ -16,13 +11,10 @@ async function createcursoService(novocurso) {
   return cursoSalvo;
 }
 
-
 async function readALLcursoService() {
-    const curso = await cursoRepositories.readALLcursoRepositories();
-
-    return curso;
+  const cursos = await cursoRepository.readALLcursoRepository();
+  return cursos;
 }
-
 
 export default {
   createcursoService,

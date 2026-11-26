@@ -1,5 +1,5 @@
 
-import cursoController from "../Controllers/curso.Controllers.js";
+import cursoController from "../Controller/curso.Controller.js";
 
 import { Router } from "express";
 
@@ -7,6 +7,6 @@ const cursoRouter = Router();
 
 cursoRouter.post("/curso", cursoController.createcursoController);
 
-cursoRouter.get("/curso", cursoController.readALLcursoController);
+cursoRouter.get('/curso', cursoController.readALLcursoController);
 
 export default cursoRouter;
