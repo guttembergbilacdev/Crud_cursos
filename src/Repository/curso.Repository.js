@@ -43,7 +43,27 @@ function readALLcursoRepository() {
   });
 }
 
+function deletecursoRepository(id) {
+    
+    return new Promise((resolve, reject) => {
+        db.run(
+            "DELETE FROM curso WHERE id = ?", 
+            [id],
+            (error) => {
+                if (error) {
+                    reject(error);
+                } else {
+                   
+                    resolve({
+                        message: "curso excluido com sucesso!"
+                    });
+                }
+            }
+        );
+    });
+}
 export default {
   createcursoRepository,
   readALLcursoRepository,
+  deletecursoRepository
 };

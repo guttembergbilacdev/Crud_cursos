@@ -16,7 +16,19 @@ async function readALLcursoService() {
   return cursos;
 }
 
+async function deletecursoServices(id) {
+    
+    const mensagemRetorno = await cursoRepository.deletecursoRepository(id);
+
+    if (!mensagemRetorno) {
+        throw new Error("Erro ao deletar curso!");
+    }
+
+    return mensagemRetorno; 
+}
+
 export default {
   createcursoService,
   readALLcursoService,
+  deletecursoServices
 };

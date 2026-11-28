@@ -9,4 +9,6 @@ cursoRouter.post("/curso", cursoController.createcursoController);
 
 cursoRouter.get('/curso', cursoController.readALLcursoController);
 
+cursoRouter.delete("/curso/:id", cursoController.deletecursoController);
+
 export default cursoRouter;
